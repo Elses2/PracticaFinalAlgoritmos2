@@ -36,10 +36,23 @@ public class TablaHash {
                 return null;
         
     }
-    ///Eliminar usando el metodo buscar como complemento, busca y elimina un elemento de la lista a traves de su clave 
-    public void eliminar(int clave){
-
-        
+    ///Eliminar: busca y elimina un elemento de la lista a traves de su clave 
+    public void eliminar(int clave){        
+        int indice=modulo(clave);
+        Tarea objeto;
+        boolean seEncontro=false;
+        for(int i=0;i<tabla.get(indice).size();i++){
+            objeto=tabla.get(indice).get(i);
+            if(objeto.getClave()==clave){
+                tabla.get(indice).remove(objeto);
+                seEncontro=true;
+            }
+        }
+        if(seEncontro){
+            System.out.println("Se ha eliminado el elemento correctamente ");
+        }else{
+            System.out.println("El elemento no se encontro en los registros ");
+        }
     }
     ///Mustra todo lo que esta en la tabla hash, solo sus posiciones en la tabla y su titulo
     public void mostrar(){
