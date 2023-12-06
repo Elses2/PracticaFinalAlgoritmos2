@@ -14,6 +14,24 @@ public class TablaHash {
         int indice=x%tam; 
         return indice;
     }
+    ///Otra funcion de dispersion: mitad al cuadrado toma la clave la eleva al cuadrado y devuelve  ciertos digitos de ese resultado como indice 
+    ///la hago publica porque no se usa solo es de practica 
+    public int mitadCuadrado(int clave){
+        int resultado=clave^2;
+        resultado=resultado%10;
+        return resultado;
+    }
+    ///Otra funcion de dispersion multiplicacion multiplica por un decimal a ese resultado toma la parte decimal y lo multiplica por m 
+    public int multiplicacion(int clave){
+        float decimal=0.6180334;
+        float resultado=clave*decimal;
+        int parteEntera=0;
+        parteEntera=(int)(Math.round(resultado));
+        resultado-=parteEntera;
+        resultado*=this.tam;///tam es m 
+        
+        return resultado;
+    }
     ///Se pasa por parametro un elemento tarea y se almacena en la tabla
     public void agregarElemento(Tarea x){
         int indice= modulo(x.getClave());
